@@ -25,7 +25,7 @@ After HR registers a device in MAMS, attendance only flows once hardware is conf
 
 Employee **Biometric ID** on the device must match **Biometric ID** in MAMS Employees.
 
-See [docs/device-compatibility-matrix.md](docs/device-compatibility-matrix.md) for vendor endpoints and [docs/biometric-go-live-runbook.md](docs/biometric-go-live-runbook.md) for the full go-live checklist (employee ID alignment, device enrollment, pilot punch).
+See [docs/device-compatibility-matrix.md](docs/device-compatibility-matrix.md) for vendor endpoints, [docs/biometric-go-live-runbook.md](docs/biometric-go-live-runbook.md) for rollout steps, and [docs/go-live-review-backlog.md](docs/go-live-review-backlog.md) for open items to review before production.
 
 ## Tech stack
 

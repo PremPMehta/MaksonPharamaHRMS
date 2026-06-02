@@ -68,7 +68,7 @@ mams/
 | Reports (PDF/CSV export) | API stub + page stub - team to flesh out |
 | Devices admin (eSSL + Hanvon vendor registry, sync, test) | Complete |
 | Settings | API stub + page stub - team to flesh out |
-| CSV bulk import | TODO - team to flesh out |
+| CSV bulk import | Complete (Employees → Import CSV) |
 | E2E tests | TODO - team to flesh out |
 
 Stubs are marked with `// TODO(team):` comments throughout the source.
