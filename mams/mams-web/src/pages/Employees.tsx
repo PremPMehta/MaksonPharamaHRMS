@@ -9,6 +9,7 @@ import { Modal } from '../components/ui/Modal';
 import { Badge } from '../components/ui/Badge';
 import { fmtDate } from '../lib/format';
 import { EmployeesAddModal } from './EmployeesAddModal';
+import { BiometricIdBanner } from '../components/goLive/BiometricIdBanner';
 
 export function Employees() {
   const [search, setSearch] = useState('');
@@ -45,6 +46,8 @@ export function Employees() {
         )}
       </div>
 
+      {canManage && <BiometricIdBanner />}
+
       <div className="card p-4 mb-4 flex gap-3">
         <input
           className="input flex-1"
@@ -60,6 +63,7 @@ export function Employees() {
             <thead className="bg-surface2">
               <tr className="text-left text-xs uppercase tracking-wider text-text-muted">
                 <th className="px-4 py-3 font-semibold">Code</th>
+                <th className="px-4 py-3 font-semibold">Biometric ID</th>
                 <th className="px-4 py-3 font-semibold">Name</th>
                 <th className="px-4 py-3 font-semibold">Department</th>
                 <th className="px-4 py-3 font-semibold">Location</th>
@@ -71,14 +75,15 @@ export function Employees() {
             </thead>
             <tbody className="divide-y divide-border">
               {isLoading && (
-                <tr><td colSpan={8} className="px-4 py-10 text-center text-text-muted">Loading...</td></tr>
+                <tr><td colSpan={9} className="px-4 py-10 text-center text-text-muted">Loading...</td></tr>
               )}
               {error && (
-                <tr><td colSpan={8} className="px-4 py-10 text-center text-red">Failed to load.</td></tr>
+                <tr><td colSpan={9} className="px-4 py-10 text-center text-red">Failed to load.</td></tr>
               )}
               {data?.items.map((e) => (
                 <tr key={e.id} className="hover:bg-surface2/50 transition">
                   <td className="px-4 py-3 font-mono text-xs">{e.empCode}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-text-muted">{e.biometricId}</td>
                   <td className="px-4 py-3 font-medium">
                     <Link to={`/employees/${e.id}`} className="text-primary hover:underline">{e.name}</Link>
                   </td>
@@ -218,7 +223,10 @@ function CsvImportModal({ onClose }: { onClose: () => void }) {
                 <span className="font-mono">weeklyOff</span>: one or two weekdays; multiple days separated with semicolons (e.g. <span className="font-mono">Saturday;Sunday</span>).
               </li>
               <li>
-                <span className="font-mono">biometricId</span> must be unique across all employees.
+                <span className="font-mono">biometricId</span> must be unique and must match the user ID enrolled on
+                each biometric device (exact string — e.g. device sends <span className="font-mono">42</span>, CSV must
+                be <span className="font-mono">42</span>, not <span className="font-mono">BIO042</span> unless the device
+                uses that).
               </li>
               <li>
                 PAN: five letters + four digits + one letter (<span className="font-mono">AAAAA0000A</span>); IFSC: valid 11-character bank code (<span className="font-mono">AAAA0XXXXXX</span>).

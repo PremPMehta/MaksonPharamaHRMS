@@ -18,7 +18,7 @@ export function Devices() {
         </div>
       </div>
 
-      <DeviceManagementPanel canManage={canManage} showSetupGuide={false} showStats />
+      <DeviceManagementPanel canManage={canManage} showSetupGuide showGoLivePanels showStats />
     </div>
   );
 }

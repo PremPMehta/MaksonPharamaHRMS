@@ -81,9 +81,10 @@ export function DevicePostRegisterModal({
         )}
 
         <div className="rounded-md border border-amber/30 bg-amber/5 p-3 text-xs text-text-muted">
-          <strong className="text-text">Employees:</strong> Each person must be enrolled on the device with a
-          biometric ID that matches their <strong>Biometric ID</strong> in MAMS Employees. Unknown IDs are
-          logged as orphan punches and will not appear in attendance.
+          <strong className="text-text">Employees:</strong> Enroll each person on the device (IT/vendor software) using
+          the same user ID as their <strong>Biometric ID</strong> in MAMS Employees. If the device sends an unknown ID,
+          MAMS does not save attendance — check <strong>Unmapped punches</strong> on the Devices page, fix the
+          employee record, then re-punch.
         </div>
 
         <p className="text-[11px] text-text-subtle">

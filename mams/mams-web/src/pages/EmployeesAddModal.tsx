@@ -268,7 +268,10 @@ export function EmployeesAddModal({ onClose }: { onClose: () => void }) {
                   {err('biometricId') ? (
                     <p className="mt-1 text-[11px] text-red">{err('biometricId')}</p>
                   ) : (
-                    <p className="mt-1 text-[11px] text-text-subtle">Must be unique (device enrolment ID).</p>
+                    <p className="mt-1 text-[11px] text-text-subtle">
+                      Must match the user ID on the biometric device exactly (same string IT enrolls on hardware).
+                      Employee code is not used for punches.
+                    </p>
                   )}
                 </div>
               </div>

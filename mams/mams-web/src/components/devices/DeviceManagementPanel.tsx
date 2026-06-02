@@ -8,6 +8,9 @@ import { DeviceSetupGuide } from './DeviceSetupGuide';
 import { DeviceTable } from './DeviceTable';
 import { DeviceRegisterModal } from './DeviceRegisterModal';
 import { DevicePostRegisterModal } from './DevicePostRegisterModal';
+import { GoLiveChecklist } from '../goLive/GoLiveChecklist';
+import { OrphanPunchesPanel } from '../goLive/OrphanPunchesPanel';
+import { GoLiveReadinessPanel } from '../goLive/GoLiveReadinessPanel';
 import type { DeviceCreate } from '../../api/devices';
 import {
   getDeviceConnectionState,
@@ -18,10 +21,12 @@ import {
 export function DeviceManagementPanel({
   canManage,
   showSetupGuide = true,
+  showGoLivePanels = false,
   showStats = true,
 }: {
   canManage: boolean;
   showSetupGuide?: boolean;
+  showGoLivePanels?: boolean;
   showStats?: boolean;
 }) {
   const [addOpen, setAddOpen] = useState(false);
@@ -98,6 +103,7 @@ export function DeviceManagementPanel({
 
   return (
     <div className="space-y-4">
+      {showGoLivePanels && <GoLiveChecklist />}
       {showSetupGuide && canManage && <DeviceSetupGuide />}
 
       {showStats && (
@@ -185,6 +191,13 @@ export function DeviceManagementPanel({
         onTest={handleTest}
         onEdit={(d) => setEditDevice(d)}
       />
+
+      {showGoLivePanels && (
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <OrphanPunchesPanel />
+          <GoLiveReadinessPanel />
+        </div>
+      )}
 
       {addOpen && (
         <DeviceRegisterModal
